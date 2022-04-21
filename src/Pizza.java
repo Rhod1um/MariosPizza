@@ -1,5 +1,5 @@
 public class Pizza {
-    private int pizzaNumber;
+    private String pizzaNumber;
     private String name;
     private String description;
     private double price;
@@ -7,7 +7,7 @@ public class Pizza {
 
     Pizza(String name, String description, double price) {
         numberOfPizzasOnMenu++;
-        pizzaNumber = numberOfPizzasOnMenu;
+        pizzaNumber = String.valueOf(numberOfPizzasOnMenu); //pizzanummer int typecastes til String
         this.name = name;
         this.description = description;
         this.price = price;
@@ -16,11 +16,11 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "" + pizzaNumber + '.' + '\t' + name + ": " + description + "........" + price + ".-";
+        return pizzaNumber + '.' + '\t' + name + ": " + description + "........" + price + ".-";
     }
 
     // Getters
-    public int getPizzaNumber() {
+    public String getPizzaNumber() {
         return pizzaNumber;
     }
     public String getName() {

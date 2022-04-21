@@ -8,6 +8,13 @@ public class Menu {
     createPizzaMenu();
   }
 
+  public Pizza returnAPizza (int i){
+    return pizzaMenu.get(i);
+  }
+
+  public int getMenuSize(){
+    return pizzaMenu.size();
+  }
 
   private void createPizzaMenu() {
     Pizza pizza1 = new Pizza("Vesuvia", "tomatsauce, ost, skinke og oregano", 57);
