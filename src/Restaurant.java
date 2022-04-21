@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Restaurant {
     Menu menu = new Menu();
-    Orderlist orderlist = new Orderlist();
+    OrderList orderlist = new OrderList();
     //UI ui = new UI();
 
     public void takeUserInput (){
