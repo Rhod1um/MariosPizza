@@ -18,4 +18,18 @@ public class Pizza {
     public String toString() {
         return "" + pizzaNumber + '.' + '\t' + name + ": " + description + "........" + price + ".-";
     }
+
+    // Getters
+    public int getPizzaNumber() {
+        return pizzaNumber;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public double getPrice() {
+        return price;
+    }
 }
