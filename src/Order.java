@@ -25,4 +25,9 @@ public class Order {
     return "Order nr. " + orderNumber + '\n' +
         orderedPizzas;
   }
+
+  // Getters
+  public String getOrderNumber() {
+    return orderNumber;
+  }
 }
