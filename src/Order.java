@@ -10,9 +10,6 @@ public class Order {
     this.pizzaOrder = pizzaOrder; // argumentet bliver sat til at være ordren af pizzaer
     numberOfOrders++; // nummeret af ordre går op med 1
     orderNumber = String.valueOf(numberOfOrders); // nummeret/ID'et for ordren sættes til at være lig med numberOfOrders typecastet til en String
-    if (numberOfOrders >= 99) { // hvis nummeret af ordre når op på 99, for at gøre det nemmere at aflæse ordre listen,
-      numberOfOrders = 0; // så sættes nummeret af ordre til at være 0, dette vil gøre at den næste order vil få orderNumber = 1
-    }
   }
 
   @Override

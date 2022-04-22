@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Restaurant {
     Menu menu = new Menu();
-    OrderList orderlist = new OrderList();
+    OrderList orderList = new OrderList();
     //UI ui = new UI();
 
     public void takeUserInput (){
@@ -15,10 +15,39 @@ public class Restaurant {
     public void evaluateUserInput(String userInput){
         switch (userInput.toLowerCase()){
             case "menu", "m", "me", "men" -> menu.printMenu();
+            case "order", "ord", "o" -> requestOrder();
             //case "remove", "r", "re", "rem" ->
             default -> evaluateUserInputForPizzaNumbers(userInput);
         }
 
+    }
+
+    public void requestOrder() {
+        UI.beginOrder();
+        ArrayList<Pizza> requestedPizzas = new ArrayList<>();
+        boolean isRunning = true;
+        while (isRunning) {
+            UI.typeInPizzaNumber();
+            String userInput = UI.userInput();
+            for (int i = 0; i < menu.getMenuSize(); i++) {
+                Pizza pizza = menu.returnAPizza(i);
+                String pizzaNumber = pizza.getPizzaNumber();
+                if (userInput.equals(pizzaNumber)) {
+                    requestedPizzas.add(pizza);
+                    i = menu.getMenuSize();
+                } else if (i == menu.getMenuSize() - 1 && !userInput.equals("0")) {
+                    UI.pizzaNumberNotFound();
+                }
+            }
+            if (userInput.equals("0")) {
+                isRunning = false;
+            }
+        }
+        if (requestedPizzas.size() > 0) {
+            orderList.createAnOrder(requestedPizzas);
+        } else {
+            UI.noOrderWasMade();
+        }
     }
 
     //metode()

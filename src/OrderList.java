@@ -4,8 +4,8 @@ public class OrderList {
   private ArrayList<Order> orders = new ArrayList<>();
 
 
-  public void createAnOrder(ArrayList<Pizza> pizzaOrder) {
-    Order order = new Order(pizzaOrder);
+  public void createAnOrder(ArrayList<Pizza> requestedPizzas) {
+    Order order = new Order(requestedPizzas);
     orders.add(order);
   }
 
@@ -35,9 +35,9 @@ public class OrderList {
     String allOrders = "";
     for (int i = 0; i < orders.size(); i++) {
       anOrder = getAnOrder(i);
-      allOrders += anOrder;
+      allOrders += anOrder + "\n";
     }
-    return "Ordre Listen:\n" +
+    return "Ordre Listen:\n\n" +
         allOrders;
   }
 
