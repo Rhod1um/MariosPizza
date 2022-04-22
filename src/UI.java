@@ -29,12 +29,32 @@ public abstract class UI {
         System.out.println("Ukendt pizza nummer, prøv igen.");
     }
 
+    public static void orderNumberNotFound() {
+        System.out.println("Ukendt ordre nummer, prøv igen.");
+    }
+
     public static void beginOrder () {
         System.out.println("Starter en ordre.");
     }
 
+    public static void removesOrder() {
+        System.out.println("Fjerner en ordre.");
+    }
+
+    public static void typeInOrderNumber() {
+        System.out.println("Indtast order nummeret på den ordrer der skal fjernes.");
+    }
+
     public static void noOrderWasMade () {
         System.out.println("Ordren blev aflyst.");
+    }
+
+    public static void cancelRemoveOrder() {
+        System.out.println("Fjern en ordre blev aflyst.");
+    }
+
+    public static void noOrdersToRemove() {
+        System.out.println("Der er ingen ordre på listen at fjerne.");
     }
 
     public static void notLegitUserInput() {

@@ -20,7 +20,7 @@ public class Restaurant {
             case "orderliste", "ol", "orderlist" -> UI.printOrderList(orderList);
             case "order", "ord", "o" -> requestOrder();
             case "exit", "quit", "ex" -> endProgram();
-            //case "remove", "r", "re", "rem" -> removeAnOrder();
+            case "remove", "r", "re", "rem" -> removeAnOrder();
             default -> UI.notLegitUserInput();
         }
 
@@ -60,12 +60,32 @@ public class Restaurant {
     }
 
     public void removeAnOrder() {
-        // printer ud på skærmen at spørge bruger hvilken order nummer der skal slettes
-        // scanner brugerens svar
-        // Loop igennem orderList og find hver ordre og gem den ordres nummer/ID i en variabel
-        // Hvis brugerens svar er lig med den fundne ordres nummer/ID, så skal der kaldes på metode orderList.removeAnOrder()
+        int amountOfOrders = orderList.getOrders().size();
+        if (amountOfOrders > 0) {
+            UI.removesOrder();
+            boolean isNotAnOrder = true;
+            while (isNotAnOrder) {
+                UI.typeInOrderNumber();
+                String userInput = UI.userInput();
+                if (!userInput.equals("0")) {
+                    for (int i = 0; i < amountOfOrders; i++) {
+                        Order order = orderList.getAnOrder(i);
+                        String orderNumber = order.getOrderNumber();
+                        if (userInput.equals(orderNumber)) {
+                            orderList.removeAnOrder(order);
+                            isNotAnOrder = false;
+                            i = amountOfOrders;
+                        } else if (i == amountOfOrders - 1) {
+                            UI.orderNumberNotFound();
+                        }
+                    }
+                } else {
+                    UI.cancelRemoveOrder();
+                    isNotAnOrder = false;
+                }
+            }
+        } else {
+           UI.noOrdersToRemove();
+        }
     }
-
-
-
 }

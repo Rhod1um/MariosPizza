@@ -9,24 +9,10 @@ public class OrderList {
     orders.add(order);
   }
 
-  public void removeAnOrder(String orderNumberInput) {
-    for (int i = 0; i < orders.size(); i++) {
-      String orderNumber = orders.get(i).getOrderNumber();
-      if (orderNumberInput.equals(orderNumber)) {
-        orders.remove(i);
-        i = orders.size();
-      }
-    }
-  }
+
 
   public void removeAnOrder(Order orderInput) {
-    for (int i = 0; i < orders.size(); i++) {
-      Order order = orders.get(i);
-      if (orderInput == order) {
-        orders.remove(i);
-        i = orders.size();
-      }
-    }
+    orders.remove(orderInput);
   }
 
   @Override
@@ -44,5 +30,9 @@ public class OrderList {
   // Getters
   public Order getAnOrder(int i) {
     return orders.get(i);
+  }
+
+  public ArrayList<Order> getOrders() {
+    return orders;
   }
 }
