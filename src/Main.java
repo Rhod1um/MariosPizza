@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        //new Restaurant().takeUserInput();
-        new Main().go();
+        new Restaurant().cashierProgram();
+        //new Main().go();
     }
 
     void go() {

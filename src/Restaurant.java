@@ -1,25 +1,34 @@
 import java.util.ArrayList;
 
 public class Restaurant {
+    private boolean isRunning = true;
     Menu menu = new Menu();
     OrderList orderList = new OrderList();
-    //UI ui = new UI();
 
-    public void takeUserInput (){
-        String userInput;
-        UI.tellUserToType();
-        userInput = UI.userInput();
-        evaluateUserInput(userInput);
+    public void cashierProgram(){
+        UI.welcomeMessage();
+        while (isRunning) {
+            UI.tellUserToType();
+            String userInput = UI.userInput();
+            evaluateUserInput(userInput);
+        }
     }
 
     public void evaluateUserInput(String userInput){
         switch (userInput.toLowerCase()){
             case "menu", "m", "me", "men" -> menu.printMenu();
+            case "orderliste", "ol", "orderlist" -> UI.printOrderList(orderList);
             case "order", "ord", "o" -> requestOrder();
-            //case "remove", "r", "re", "rem" ->
-            default -> evaluateUserInputForPizzaNumbers(userInput);
+            case "exit", "quit", "ex" -> endProgram();
+            //case "remove", "r", "re", "rem" -> removeAnOrder();
+            default -> UI.notLegitUserInput();
         }
 
+    }
+
+    public void endProgram() {
+        UI.endMessage();
+        isRunning = false;
     }
 
     public void requestOrder() {
@@ -50,31 +59,13 @@ public class Restaurant {
         }
     }
 
-    //metode()
-    // ArrayList med pizzer der bliver til en odre
-    // 1 tager userinput og kalder på evalue....()
-    // 2 if (pizza der returnes er null)
-    // 3 så skal den ikke sættes ind i arrayliste
-    // 4 ellers skal den ind i listen
-    // while (userinput ikke er lig med 0)
-    // 1 tager userinput og kalder på evalue....()
-    // 2 if (pizza der returnes er null)
-    // 3 så skal den ikke sættes ind i arrayliste
-    // 4 ellers skal den ind i listen
-
-    public void evaluateUserInputForPizzaNumbers(String userInput){
-        ArrayList <Pizza> pizzasToMakeAnOrder = new ArrayList<>();
-
-        for (int i = 0; i < menu.getMenuSize(); i++) {
-            Pizza pizza = menu.returnAPizza(i);
-            String pizzaNumber = pizza.getPizzaNumber();
-            if (pizzaNumber.equals(userInput)){
-                pizzasToMakeAnOrder.add(pizza);
-                i = menu.getMenuSize();
-            }
-        }
-
+    public void removeAnOrder() {
+        // printer ud på skærmen at spørge bruger hvilken order nummer der skal slettes
+        // scanner brugerens svar
+        // Loop igennem orderList og find hver ordre og gem den ordres nummer/ID i en variabel
+        // Hvis brugerens svar er lig med den fundne ordres nummer/ID, så skal der kaldes på metode orderList.removeAnOrder()
     }
+
 
 
 }
