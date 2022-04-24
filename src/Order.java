@@ -17,9 +17,12 @@ public class Order {
     String orderedPizzas = ""; // denne String variabel kommer til at have all ordered pizzaers: nummer, navn og beskrivelse efterfulgt af en ny linje
     for (int i = 0; i < pizzaOrder.size(); i++) {
       Pizza pizza = pizzaOrder.get(i);
-      orderedPizzas += pizza.getPizzaNumber() + ". " + pizza.getName() + ": " + pizza.getDescription() + '\n';
+      orderedPizzas += "\t" + pizza.getPizzaNumber() + ". " + pizza.getName() + ": " + pizza.getDescription();
+      if (i != pizzaOrder.size() - 1) {
+        orderedPizzas += "\n";
+      }
     }
-    return "Order nr. " + orderNumber + '\n' +
+    return "\033[1;97m" + " Order nr. " + orderNumber + " " + "\033[0m" + '\n' +
         orderedPizzas;
   }
 

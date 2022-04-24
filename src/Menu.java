@@ -12,7 +12,7 @@ public class Menu {
     return pizzaMenu.get(i);
   }
 
-  public int getMenuSize(){
+  public int getPizzaMenuSize(){
     return pizzaMenu.size();
   }
 
@@ -52,9 +52,4 @@ public class Menu {
     pizzaMenu.addAll(List.of(pizzas));
   }
 
-  public void printMenu() {
-    for (int i = 0; i < pizzaMenu.size(); i++) {
-      System.out.println(pizzaMenu.get(i));
-    }
-  }
 }

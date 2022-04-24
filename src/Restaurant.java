@@ -15,15 +15,16 @@ public class Restaurant {
     }
 
     public void evaluateUserInput(String userInput){
+        UI.printEmptyLine();
         switch (userInput.toLowerCase()){
-            case "menu", "m", "me", "men" -> menu.printMenu();
+            case "menu", "m", "me", "men" -> UI.printMenu(menu);
             case "orderliste", "ol", "orderlist" -> UI.printOrderList(orderList);
             case "order", "ord", "o" -> requestOrder();
             case "exit", "quit", "ex" -> endProgram();
             case "remove", "r", "re", "rem" -> removeAnOrder();
             default -> UI.notLegitUserInput();
         }
-
+        UI.printEmptyLine();
     }
 
     public void endProgram() {
@@ -38,13 +39,13 @@ public class Restaurant {
         while (isRunning) {
             UI.typeInPizzaNumber();
             String userInput = UI.userInput();
-            for (int i = 0; i < menu.getMenuSize(); i++) {
+            for (int i = 0; i < menu.getPizzaMenuSize(); i++) {
                 Pizza pizza = menu.returnAPizza(i);
                 String pizzaNumber = pizza.getPizzaNumber();
                 if (userInput.equals(pizzaNumber)) {
                     requestedPizzas.add(pizza);
-                    i = menu.getMenuSize();
-                } else if (i == menu.getMenuSize() - 1 && !userInput.equals("0")) {
+                    i = menu.getPizzaMenuSize();
+                } else if (i == menu.getPizzaMenuSize() - 1 && !userInput.equals("0")) {
                     UI.pizzaNumberNotFound();
                 }
             }
@@ -54,6 +55,8 @@ public class Restaurant {
         }
         if (requestedPizzas.size() > 0) {
             orderList.createAnOrder(requestedPizzas);
+            Order newestOrder = orderList.getAnOrder(orderList.getOrders().size() - 1);
+            UI.anOrderWasMade(newestOrder);
         } else {
             UI.noOrderWasMade();
         }
@@ -72,11 +75,13 @@ public class Restaurant {
                         Order order = orderList.getAnOrder(i);
                         String orderNumber = order.getOrderNumber();
                         if (userInput.equals(orderNumber)) {
+                            UI.orderWasRemoved(order);
                             orderList.removeAnOrder(order);
                             isNotAnOrder = false;
                             i = amountOfOrders;
                         } else if (i == amountOfOrders - 1) {
                             UI.orderNumberNotFound();
+                            UI.printEmptyLine();
                         }
                     }
                 } else {

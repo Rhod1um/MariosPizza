@@ -18,9 +18,6 @@ public class Pizza {
     public String toString() {
         String numberNameDescription = pizzaNumber + ". " + name + ": " + description;
         return String.format("%-130s%.0f,-", numberNameDescription, price);
-        //return String.format("%s\t%s: %-70s%30f", pizzaNumber, name, description, price);
-        //return pizzaNumber + '.' + '\t' + String.format("%s", name) + ": " + String.format("%-90s", description) + String.format("%f", price) + ".-";
-        // vi skal have noget replace all her
     }
 
     // Getters

@@ -17,14 +17,29 @@ public class OrderList {
 
   @Override
   public String toString() {
-    Order anOrder;
-    String allOrders = "";
-    for (int i = 0; i < orders.size(); i++) {
-      anOrder = getAnOrder(i);
-      allOrders += anOrder + "\n";
+    if (orders.size() > 0) {
+      Order anOrder;
+      String allOrders = "";
+      for (int i = 0; i < orders.size(); i++) {
+        String BACKGROUND;
+        String END_BACKGROUND = "\u001B[0m";
+        if (i % 2 == 0) {
+          BACKGROUND = "\u001B[40m"; // Sort baggrundsfarve ved lige index
+        } else {
+          BACKGROUND = "\u001B[42m"; // Grøn baggrundsfarve ved ulige index
+        }
+        anOrder = getAnOrder(i);
+        allOrders += BACKGROUND + anOrder + END_BACKGROUND;
+        if (i != orders.size() - 1) {
+          allOrders += "\n\n";
+        }
+      }
+      return "Ordre Listen:\n\n" +
+          allOrders;
+    } else {
+      return "Der er ingen ordre på listen i dette øjeblik.";
     }
-    return "Ordre Listen:\n\n" +
-        allOrders;
+
   }
 
   // Getters
