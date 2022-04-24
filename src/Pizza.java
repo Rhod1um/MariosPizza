@@ -16,7 +16,7 @@ public class Pizza {
 
     @Override
     public String toString() {
-        String numberNameDescription = pizzaNumber + ". " + name + ": " + description;
+        String  numberNameDescription = pizzaNumber + ". " + name + ": " + description;
         return String.format("%-130s%.0f,-", numberNameDescription, price);
     }
 

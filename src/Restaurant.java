@@ -18,10 +18,10 @@ public class Restaurant {
         UI.printEmptyLine();
         switch (userInput.toLowerCase()){
             case "menu", "m", "me", "men" -> UI.printMenu(menu);
-            case "orderliste", "ol", "orderlist" -> UI.printOrderList(orderList);
-            case "order", "ord", "o" -> requestOrder();
-            case "exit", "quit", "ex" -> endProgram();
-            case "remove", "r", "re", "rem" -> removeAnOrder();
+            case "ordreliste", "ol", "orderlist" -> UI.printOrderList(orderList);
+            case "ordre", "order", "o", "ord" -> requestOrder();
+            case "exit", "quit", "ex", "slut" -> endProgram();
+            case "remove", "fjern", "r", "re", "rem" -> removeAnOrder();
             default -> UI.notLegitUserInput();
         }
         UI.printEmptyLine();
