@@ -9,7 +9,8 @@ public class OrderList {
     orders.add(order);
   }
 
-
+  //Locale dk = new Locale("da", "DK");
+  //NumberFormat.getCurrencyInstance(dk).format(pay);
 
   public void removeAnOrder(Order orderInput) {
     orders.remove(orderInput);
